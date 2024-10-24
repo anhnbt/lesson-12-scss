@@ -1,0 +1,76 @@
+// SCSS: Bộ tiền xử lý CSS (CSS Preprocessor)
+
+// 5. @import và Partials
+@import 'reset';
+
+// 1. Variables (Biến) trong SASS/SCSS
+@import 'variables';
+
+body {
+  background-color: $bgColor;
+  color: $textColor;
+}
+
+// 2. Extends (Mở rộng) and Inheritance (Kế thừa) trong CSS
+
+.alert {
+  border: 1px solid $borderColor;
+  color: $textColor;
+  padding: 6px 12px;
+  margin: 10px 0;
+}
+
+.alert-success {
+  @extend .alert;
+  border-color: $successBg;
+}
+
+.alert-danger {
+  @extend .alert;
+  border-color: $errorBg;
+  color: $errorText;
+}
+
+// 3. Mixin & @include (Nhóm CSS)
+
+@mixin transform($property) {
+  transform: $property;
+}
+
+.box {
+  @include transform(rotate(20deg));
+  @extend .alert;
+  padding: 10px 20px;
+}
+
+// 4. Nesting (Lồng) trong CSS
+
+nav {
+  background-color: lightblue;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    font: {
+      family: Arial, Helvetica, sans-serif;
+      size: 18px;
+      weight: bold;
+    }
+    text: {
+      decoration: none;
+      align: center;
+      transform: lowercase;
+    }
+    color: #333;
+  }
+}
